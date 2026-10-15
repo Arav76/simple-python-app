@@ -1,1 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
 
+metadata:
+  name: app-green
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: sample
+      version: green
+
+  template:
+    metadata:
+      labels:
+        app: sample
+        version: green
+
+    spec:
+      containers:
+      - name: app
+        image: arav76/sample-python-app:v2
+
+        ports:
+        - containerPort: 5000
